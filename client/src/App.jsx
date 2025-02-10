@@ -30,7 +30,7 @@ export const App=()=>{
 {/* //nested routes */}
     <Route path="/admin" element={<AdminLayout/>}>
       <Route path="users" element={<AdminUsers/>}/>
-      <Route path="contacts" element={<AdminContacts/>}/>
+      <Route path="contact" element={<AdminContacts/>}/>
       <Route path="users/:id/edit" element={<AdminUpdate />} />
     </Route>
 

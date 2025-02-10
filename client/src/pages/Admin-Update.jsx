@@ -17,7 +17,7 @@ export const AdminUpdate = () => {
   //   get single user data
   const getSingleUserData = async () => {
     try {
-      const response = await fetch(`http://localhost:5004/api/admin/users${params.id}`, {
+      const response = await fetch(`http://localhost:5004/api/admin/users/${params.id}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -26,10 +26,6 @@ export const AdminUpdate = () => {
       const data = await response.json();
       console.log(`users single data:  ${data}`);
       setData(data);
-
-        if (response.ok) {
-          getAllUsersData();
-        }
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +61,6 @@ export const AdminUpdate = () => {
           body: JSON.stringify(data),
         }
       );
-
       if (response.ok) {
         toast.success("Updated successfully");
       } else {
@@ -134,3 +129,5 @@ export const AdminUpdate = () => {
     </section>
   );
 };
+
+

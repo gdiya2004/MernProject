@@ -44,6 +44,15 @@ export const deleteUserById=async(req,res)=>{
         next(error);
     }
 }
+export const deleteUserByContact=async(req,res)=>{
+    try{
+        const id=req.params.id;
+        await Contact.deleteOne({_id:id});
+        return res.status(200).json({message:"Contact Deleted Successfully"})
+    }catch(err){
+        next(err);
+    }
+}
 export const updateUserById=async(req,res)=>{
     try{
         const id=req.params.id;
@@ -51,25 +60,11 @@ export const updateUserById=async(req,res)=>{
         const updatedData=await User.updateOne({_id:id},{
             $set:data,
         })
+        console.log(updatedData)
         return res.status(200).json(updatedData);
     }catch(error){
         console.log("update error")
         next(error);
     }
 }
-// export const updateUserById = async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const updatedUserData = req.body;
 
-//     const updatedData = await User.updateOne(
-//       { _id: id },
-//       {
-//         $set: updatedUserData,
-//       }
-//     );
-//     return res.status(200).json(updatedData);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
